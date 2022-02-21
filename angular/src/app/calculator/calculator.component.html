@@ -1,0 +1,37 @@
+<h1 for="website">Currency Convertor</h1>
+
+<ul>
+  <li>1 Indian Rupee => 0.049 Dubai Dinar</li>
+  <li>1 Indian Rupee => 2.7 Sri Lankan Rupee</li>
+  <li>1 Indian Rupee => 1.54 Japanese Yen</li>
+  <li>1 Indian Rupee => 0.013 American Dollar</li>
+  <li>1 Indian Rupee => 0.02 New Zealand Dollar</li>
+  <li>1 Indian Rupee => 0.085 Chinese Yuan</li>
+</ul>
+
+<div
+  style="
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  "
+  class="form-group"
+>
+  <h4>INR</h4>
+  &nbsp;
+  <input type="number" [(ngModel)]="val1" (change)="valuechange()" />
+  <br />
+  <p style="margin-left: 10px">--></p>
+  <br />
+  <select
+    class="form-control"
+    [(ngModel)]="curr2"
+    style="margin: 10px"
+    (change)="reset()"
+  >
+    <option disabled>Currency 2</option>
+    <option *ngFor="let opt of abbr">{{ opt }}</option>
+  </select>
+  <input type="text" disabled [(ngModel)]="val2" />
+</div>

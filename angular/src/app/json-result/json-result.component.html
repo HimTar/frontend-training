@@ -1,0 +1,27 @@
+<h1>API Data Table Display</h1>
+
+<p>
+  Source :
+  <a href="https://jsonplaceholder.typicode.com/posts"
+    >https://jsonplaceholder.typicode.com/posts</a
+  >
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>UserID</th>
+      <th>API Body</th>
+      <th>API Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data">
+      <td>{{ item.id }}</td>
+      <td>{{ item.userId }}</td>
+      <td>{{ item.body }}</td>
+      <td>{{ item.title }}</td>
+    </tr>
+  </tbody>
+</table>
