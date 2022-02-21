@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1 Table</title>
+
+    <style>
+      table,
+      tr,
+      td {
+        border: 1px solid;
+      }
+
+      .center {
+        color: red;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      td {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="table"></table>
+  </body>
+
+  <script>
+    var arr = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+
+    function createTable() {
+      document.body.removeChild(document.getElementById("table"));
+
+      var table = document.createElement("table");
+      var tbody = document.createElement("tbody");
+
+      table.setAttribute("id", "table");
+
+      arr.forEach((row, i) => {
+        var trow = document.createElement("tr");
+        row.forEach((col, j) => {
+          var cell = document.createElement("td");
+          cell.appendChild(document.createTextNode(col));
+          if (i === 1 && j === 1) {
+            cell.classList.add("center");
+            cell.onclick = handleClick;
+          }
+          trow.appendChild(cell);
+        });
+        tbody.appendChild(trow);
+      });
+
+      table.appendChild(tbody);
+      document.body.appendChild(table);
+    }
+
+    function handleClick() {
+      var row = 0,
+        col = 0;
+      var prev,
+        curr,
+        m = 3,
+        n = 3;
+
+      while (row < m && col < n) {
+        if (row + 1 == m || col + 1 == n) break;
+
+        prev = arr[row + 1][col];
+
+        for (let i = col; i < n; i++) {
+          curr = arr[row][i];
+          arr[row][i] = prev;
+          prev = curr;
+        }
+        row++;
+
+        for (let i = row; i < m; i++) {
+          curr = arr[i][n - 1];
+          arr[i][n - 1] = prev;
+          prev = curr;
+        }
+        n--;
+
+        if (row < m) {
+          for (let i = n - 1; i >= col; i--) {
+            curr = arr[m - 1][i];
+            arr[m - 1][i] = prev;
+            prev = curr;
+          }
+        }
+        m--;
+
+        if (col < n) {
+          for (let i = m - 1; i >= row; i--) {
+            curr = arr[i][col];
+            arr[i][col] = prev;
+            prev = curr;
+          }
+        }
+
+        col++;
+      }
+
+      createTable();
+    }
+    createTable();
+  </script>
+</html>

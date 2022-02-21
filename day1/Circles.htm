@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 1</title>
+
+    <style>
+      div {
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .orange {
+        height: 200px;
+        width: 200px;
+        background-color: rgb(255, 150, 52);
+        position: relative;
+      }
+
+      .white {
+        height: 130px;
+        width: 130px;
+        background-color: #fff;
+        position: absolute;
+        top: 35px;
+        left: 35px;
+      }
+
+      .green {
+        height: 70px;
+        width: 70px;
+        background-color: rgb(51, 177, 51);
+        position: absolute;
+        top: 30px;
+        left: 30px;
+      }
+    </style>
+
+    <script>
+      function handleClick(name) {
+        alert(name);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="orange" title="Orange" onclick="handleClick('Orange')">
+      <div class="white" title="White" onclick="handleClick('White')">
+        <div class="green" title="Green" onclick="handleClick('Green')"></div>
+      </div>
+    </div>
+  </body>
+</html>
